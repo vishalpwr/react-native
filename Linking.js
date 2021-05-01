@@ -1,14 +1,12 @@
-import React, { useCallback, } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Alert, Button, Linking, Platform, StyleSheet, Text, View } from "react-native";
 
-const url1 = "https://github.com/vishal-pawar";
 
-const url2 = "abcd://abcd.com";
-
-const contact = '+91 xxxxxxxxxxx';
 
 const LinkingPage = () => {
-
+    
+    const url1 = "https://github.com/vishal-pawar";
+    const url2 = "abcd://abcd.com";
     const number = '+910987654321'
     const message = "hello there!!"
 
@@ -65,7 +63,7 @@ const LinkingPage = () => {
             </View>
             <View style={styles.buttonContainer}>
                 <Button title="Open Whatsapp" onPress={() => {
-                    Linking.openURL(`whatsapp://send?phone=${contact}&text=${message}`)
+                    Linking.openURL(`whatsapp://send?phone=${number}&text=${message}`)
                 }} color="green" />
             </View>
             <View style={styles.buttonContainer}>
