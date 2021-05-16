@@ -4,6 +4,12 @@ clone the module and add on any react-native or expo project, and test it.
 ### Linking Screen - Linking
 ### Fully Customize header component - AppHeader
 
+### install required dependency for header component
+```
+npm i react-native-paper react-native-vector-icons
+link vector icons
+react-native link react-native-vector-icons
+```
 Header usage:
 ```
 <AppHeader
