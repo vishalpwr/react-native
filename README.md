@@ -1,8 +1,9 @@
 # react-native
 
 clone the module and add on any react-native or expo project, and test it. 
-### Linking Screen - Linking
-### Fully Customize header component - AppHeader
+### 1 Linking Screen - Linking
+### 2 Fully Customize header component - AppHeader
+### 3 ModalView Component
 
 ### install required dependency for header component
 ```
