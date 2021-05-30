@@ -30,7 +30,6 @@ Header usage:
 <div display="inline-block">
   <img src="/screenshots/header1.jpg" width="300" height="100" />
   <img src="/screenshots/header2.jpg" width="300" height="100" />
-  <img src="/screenshots/header3.jpg" width="300" height="100" />
 </div>
 
 ### ModalView
