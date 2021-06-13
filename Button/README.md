@@ -24,7 +24,7 @@ import {Button, RoundButton} from './components/AppButton';
 
 #### Rounded Button Screenshot
 <div display="inline-block">
-  <img src="/screenshots/rounded_button.png" width="200" height="200" />
+  <img src="/screenshots/rounded_button.png" width="150" height="180" />
 </div>
 
 
