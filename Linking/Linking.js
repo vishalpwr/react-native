@@ -4,7 +4,7 @@ import { Alert, Button, Linking, Platform, StyleSheet, Text, View } from "react-
 
 
 const LinkingPage = () => {
-    
+
     const url1 = "https://github.com/vishal-pawar";
     const url2 = "abcd://abcd.com";
     const number = '+910987654321'
@@ -33,15 +33,21 @@ const LinkingPage = () => {
         const separator = Platform.OS === 'ios' ? '&' : '?'
         const url = `sms:${phNumber}${separator}body=${message}`
         await Linking.openURL(url)
-      }, [])
+    }, [])
 
+    const openInsta = () => {
+        Linking.openURL('instagram://user?username=instagram')
+            .catch(() => {
+                Linking.openURL('https://www.instagram.com/instagram');
+            })
+    }
     return (
         <View style={styles.container}>
             <View style={styles.buttonContainer}>
                 <Button title="Open Url" onPress={() => {
                     openUrl(url1)
                 }} color="steelblue" />
-                
+
             </View>
             <View style={styles.buttonContainer}>
                 <Button title="call" onPress={() => {
@@ -83,6 +89,9 @@ const LinkingPage = () => {
             </View>
             <View style={styles.buttonContainer}>
                 <Button title="open Gallery" onPress={openPhotos} color="powderblue" />
+            </View>
+            <View style={styles.buttonContainer}>
+                <Button title="Open Instagram" onPress={openInsta} color="steelblue" />
             </View>
         </View>
     );
