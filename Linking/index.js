@@ -18,6 +18,12 @@ const LinkingPage = () => {
             Alert.alert(`Don't know how to open this url: ${url}`);
         }
     }
+    
+    const sendTextMessage = useCallback(async (phNumber, message) => {
+        const separator = Platform.OS === 'ios' ? '&' : '?'
+        const url = `sms:${phNumber}${separator}body=${message}`
+        await Linking.openURL(url)
+    }, [])
 
     const openPhotos = () => {
         if (Platform.OS == 'ios') {
@@ -28,12 +34,6 @@ const LinkingPage = () => {
             console.log("Could not open Photos")
         }
     }
-
-    const sendTextMessage = useCallback(async (phNumber, message) => {
-        const separator = Platform.OS === 'ios' ? '&' : '?'
-        const url = `sms:${phNumber}${separator}body=${message}`
-        await Linking.openURL(url)
-    }, [])
 
     const openInsta = () => {
         Linking.openURL('instagram://user?username=instagram')
