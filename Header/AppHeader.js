@@ -6,59 +6,69 @@ import Colors from '../constants/Colors';
 
 const IconSize = 24;
 
-const AppHeader = ({ menu, back, title, right, rightFunction, optionalIcon, optionalFunc, navigation, headerBg, iconColor, titleAlight, optionalBadge }) => {
-    return (
-        <Surface style={[styles.header, {backgroundColor: headerBg}]}>
-            <View style={styles.view}>
-                {menu && <TouchableOpacity onPress={() => navigation.openDrawer()}>
-                    <Feather name="menu" size={IconSize} color={iconColor} />
-                </TouchableOpacity>}
-                {back && <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Feather name="arrow-left" size={IconSize} color={iconColor} />
-                </TouchableOpacity>}
-            </View>
-            <View style={styles.titleView}>
-                <Title style={{ color: iconColor, textAlign: titleAlight }}>{title}</Title>
-            </View>
-            <View style={[styles.view, styles.rightView]}>
-                {optionalFunc && <TouchableOpacity style={styles.rowView} onPress={optionalFunc}>
-                    <Feather name={optionalIcon} size={IconSize} color={iconColor} />
-                    {optionalBadge && <Badge style={{position: 'absolute', top: -5, right: -10}}>{optionalBadge}</Badge>}
-                </TouchableOpacity>}
-                {rightFunction && <TouchableOpacity onPress={rightFunction}>
-                    <Feather name={right} size={IconSize} color={iconColor} />
-                </TouchableOpacity>}
-            </View>
-        </Surface>
-    )
+const AppHeader = ({ style, menu, back, title, right, onRightPress, optionalBtn, optionalBtnPress, rightComponent, headerBg, iconColor, titleAlight, optionalBadge }) => {
+
+	const LeftView = () => (
+		<View style={styles.view}>
+			{menu && <TouchableOpacity onPress={() => { }}>
+				<Feather name="menu" size={IconSize} color={iconColor} />
+			</TouchableOpacity>}
+			{back && <TouchableOpacity onPress={() => { }}>
+				<Feather name="arrow-left" size={IconSize} color={iconColor} />
+			</TouchableOpacity>}
+		</View>
+	)
+	const RightView = () => (
+		rightComponent ? rightComponent :
+			<View style={[styles.view, styles.rightView]}>
+				{optionalBtn && <TouchableOpacity style={styles.rowView} onPress={optionalBtnPress}>
+					<Feather name={optionalBtn} size={IconSize} color={iconColor} />
+					{optionalBadge && <Badge style={{ position: 'absolute', top: -5, right: -10 }}>{optionalBadge}</Badge>}
+				</TouchableOpacity>}
+				{right && <TouchableOpacity onPress={onRightPress}>
+					<Feather name={right} size={IconSize} color={iconColor} />
+				</TouchableOpacity>}
+			</View>
+	)
+	const TitleView = () => (
+		<View style={styles.titleView}>
+			<Title style={{ color: iconColor, textAlign: titleAlight }}>{title}</Title>
+		</View>
+	)
+	return (
+		<Surface style={[styles.header, style, { backgroundColor: headerBg }]}>
+			<LeftView />
+			<TitleView />
+			<RightView />
+		</Surface>
+	)
 }
 
 export default AppHeader
 
 const styles = StyleSheet.create({
-    header: {
-        height: 50,
-        elevation: 4,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flexDirection: 'row',
-        backgroundColor: Colors.black,
-    },
-    view: {
-        margin: 10,
-        alignItems: 'center',
-        flexDirection: 'row',
-        // backgroundColor: 'yellow'
-    },
-    titleView:{
-        flex: 1,
-    },
-    rightView: {
-        justifyContent: 'flex-end',
-    },
-    rowView: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginRight: 10,
-    }
+	header: {
+		height: 50,
+		elevation: 8,
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		flexDirection: 'row',
+		backgroundColor: Colors.black,
+	},
+	view: {
+		marginHorizontal: 16,
+		alignItems: 'center',
+		flexDirection: 'row',
+	},
+	titleView: {
+		flex: 1,
+	},
+	rightView: {
+		justifyContent: 'flex-end',
+	},
+	rowView: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		marginRight: 10,
+	}
 })
