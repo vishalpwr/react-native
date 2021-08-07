@@ -1,4 +1,4 @@
-# react-native
+# react-native - Header Component
 
 clone the module and add on any react-native or expo project. 
 
